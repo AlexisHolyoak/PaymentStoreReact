@@ -1,0 +1,7 @@
+---
+applications:
+- name: react-redux-dtn
+  memory: 128MB
+  instances: 1
+  buildpack: staticfile_buildpack
+  stack: cflinuxfs3

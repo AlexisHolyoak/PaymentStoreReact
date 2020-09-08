@@ -1,0 +1,108 @@
+{
+  "name": "react-redux",
+  "description": "React and Redux",
+  "scripts": {
+    "start": "run-p start:dev start:api",
+    "start:dev": "webpack-dev-server --config webpack.config.dev.js --port 3000",
+    "prestart:api": "node tools/createMockDb.js",
+    "start:api": "node tools/apiServer.js",
+    "clean:build": "rimraf ./build && mkdir build",
+    "copy:manifest": "node -e \"require('fs').copyFile('./manifest.yml', './build/manifest.yml', function(err) { if (err) console.log(err); console.log('manifest.yml copied!') })\"",
+    "copy:Staticfile": "node -e \"require('fs').copyFile('./Staticfile', './build/Staticfile', function(err) { if (err) console.log(err); console.log('Staticfile copied!') })\"",
+    "prebuild": "run-p clean:build",
+    "build": "webpack --config webpack.config.prod.js",
+    "postbuild": "run-p start:api copy:manifest copy:Staticfile serve:build",
+    "serve:build": "http-server ./build"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bootstrap": "^4.4.1",
+    "cors": "^2.8.5",
+    "immer": "^5.0.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.11.0",
+    "react-bootstrap": "^1.0.0-beta.16",
+    "react-dom": "^16.11.0",
+    "react-fontawesome": "^1.7.1",
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.1.2",
+    "react-toastify": "^5.4.0",
+    "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-react-app": "^9.0.2",
+    "css-loader": "^3.2.0",
+    "cssnano": "^4.1.10",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "eslint": "^6.6.0",
+    "eslint-loader": "^3.0.2",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-react": "^7.16.0",
+    "fetch-mock": "^7.7.2",
+    "html-webpack-plugin": "^3.2.0",
+    "http-server": "^0.9.0",
+    "jest": "^24.5.0",
+    "json-server": "^0.15.1",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-fetch": "^2.6.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-loader": "^3.0.0",
+    "redux-immutable-state-invariant": "^2.1.0",
+    "redux-mock-store": "^1.5.3",
+    "rimraf": "^3.0.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "babel": {
+    "presets": [
+      "babel-preset-react-app"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings"
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true,
+      "jest": true
+    },
+    "rules": {
+      "no-debugger": "off",
+      "no-console": "off",
+      "no-unused-vars": "warn",
+      "react/prop-types": "warn"
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "root": true
+  }
+}
