@@ -23,7 +23,7 @@ export function createOrderSuccess(order) {
    console.log("in getOrders");
     return(dispatch)=>{   
       dispatch(beginApiCall());
-      return Axios.get("http://3.15.174.163/api/orders/10",{headers:{"Access-Control-Allow-Origin": "*"}})
+      return Axios.get("http://127.0.0.1:8090/api/orders",{headers:{"Access-Control-Allow-Origin": "*"}})
       .then(result=>{
         console.log(result.data);
         dispatch(getOrderSuccess(result.data));

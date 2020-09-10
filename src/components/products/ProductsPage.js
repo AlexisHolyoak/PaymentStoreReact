@@ -26,6 +26,8 @@ class ProductsPage extends React.Component {
       actions.getProducts().catch(error => {
         alert("Loading products failed" + error);
       });
+    }else{
+      alert("there are products loaded");
     }
 
     if (orders.length === 0) {

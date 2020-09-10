@@ -12,11 +12,13 @@ export function getProducts() {
   return(dispatch)=>{   
     dispatch(beginApiCall());
  
-    //Axios.get('https://my-json-server.typicode.com/richardpuma/db_data/products')
+    //Axios.get('https://my-json-server.typicode.com/alexisholyoak/orders-store/products')
 
 
-    return Axios.get("http://3.15.174.163/api/products",{headers:{"Access-Control-Allow-Origin": "*"}})
+    return Axios.get("https://my-json-server.typicode.com/alexisholyoak/orders-store/products",{headers:{"Access-Control-Allow-Origin": "*"}})
     .then(result=>{
+      console.log("llamada a lista de productos")
+      console.log(result.data);
       dispatch(getProductSuccess(result.data));
     }).catch(error=>{
       dispatch(apiCallError(error));

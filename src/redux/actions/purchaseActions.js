@@ -37,7 +37,7 @@ export function createPurchaseSuccess(purchase) {
     return(dispatch)=>{   
       dispatch(beginApiCall());
       //Axios.get('https://my-json-server.typicode.com/richardpuma/db_data/products')
-      return Axios.post("http://3.15.174.163/api/orders",purchase,{headers:{"Access-Control-Allow-Origin": "*"}})
+      return Axios.post("http://127.0.0.1:8090/api/orders",purchase,{headers:{"Access-Control-Allow-Origin": "*"}})
       .then(result=>{
         //dispatch(getProductSuccess(result.data));
         console.log("resultado de purchase")

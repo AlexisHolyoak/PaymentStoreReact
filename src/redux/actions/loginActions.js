@@ -10,7 +10,7 @@ export function getLoginCustomer(customerId) {
 export function login(user,password) {
   return(dispatch)=>{   
     dispatch(beginApiCall());
-    return Axios.post("https://banking-api-customers.cfapps.io/api/users/login",{"Name":user,"Password":password})
+    return Axios.post("http://localhost:55741/api/users/login",{"Name":user,"Password":password})
     .then(result=>{
       alert("Bienvenido:" + user);
       //alert("Login Succesfull");
